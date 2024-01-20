@@ -27,13 +27,13 @@ class OrderView(ViewSet):
     order = Order.objects.create(
       order_name=request.data["order_name"],
       customer_name=request.data["customer_name"],
-      completion_status=request.data["completion_status"],
+      # completion_status=request.data["completion_status"],
       phone_number=request.data["phone_number"],
       email=request.data["email"],
       order_type=request.data["order_type"],
       payment_type=request.data["payment_type"],
-      date=request.data["date"],
-      user_id=request.data["user_id"],
+      # date=request.data["date"],
+      # user_id=request.data["user_id"],
       tip=request.data["tip"],
       order_total=request.data["order_total"]
     )
@@ -47,13 +47,13 @@ class OrderView(ViewSet):
       order = Order.objects.get(pk=pk)
       order.order_name = request.data["order_name"]
       order.customer_name = request.data["customer_name"]
-      order.completion_status = request.data["completion_status"]
+      # order.completion_status = request.data["completion_status"]
       order.phone_number = request.data["phone_number"]
       order.email = request.data["email"]
       order.order_type = request.data["order_type"]
       order.payment_type = request.data["payment_type"]
-      order.date = request.data["date"]
-      order.user_id = request.data["user_id"]
+      # order.date = request.data["date"]
+      # order.user_id = request.data["user_id"]
       order.tip = request.data["tip"]
       order.order_total = request.data["order_total"]
       order.items.set(request.data["items"])
