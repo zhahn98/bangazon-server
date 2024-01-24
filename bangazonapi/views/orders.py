@@ -2,7 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from bangazonapi.models import Order, Item
+from bangazonapi.models import Order, Item, OrderItem
 
 class OrderView(ViewSet):
   def retrieve(self, request, pk):
@@ -25,21 +25,20 @@ class OrderView(ViewSet):
     item_ids = request.data.get("items", [])
     
     order = Order.objects.create(
-      order_name=request.data["order_name"],
-      customer_name=request.data["customer_name"],
-      # completion_status=request.data["completion_status"],
-      phone_number=request.data["phone_number"],
-      email=request.data["email"],
-      order_type=request.data["order_type"],
-      payment_type=request.data["payment_type"],
-      # date=request.data["date"],
-      # user_id=request.data["user_id"],
-      tip=request.data["tip"],
-      order_total=request.data["order_total"]
+        order_name=request.data["order_name"],
+        customer_name=request.data["customer_name"],
+        phone_number=request.data["phone_number"],
+        email=request.data["email"],
+        order_type=request.data["order_type"],
+        payment_type=request.data["payment_type"],
+        tip=request.data["tip"],
+        order_total=request.data["order_total"]
     )
 
-    order.items.set(item_ids)
-    
+    for item_id in item_ids:
+        item = Item.objects.get(id=item_id)
+        OrderItem.objects.create(order=order, item=item)
+
     serializer = OrderSerializer(order)
     return Response(serializer.data, status=status.HTTP_201_CREATED)
   
@@ -47,13 +46,10 @@ class OrderView(ViewSet):
       order = Order.objects.get(pk=pk)
       order.order_name = request.data["order_name"]
       order.customer_name = request.data["customer_name"]
-      # order.completion_status = request.data["completion_status"]
       order.phone_number = request.data["phone_number"]
       order.email = request.data["email"]
       order.order_type = request.data["order_type"]
       order.payment_type = request.data["payment_type"]
-      # order.date = request.data["date"]
-      # order.user_id = request.data["user_id"]
       order.tip = request.data["tip"]
       order.order_total = request.data["order_total"]
       order.items.set(request.data["items"])
