@@ -1,0 +1,18 @@
+[
+  {
+      "model": "bangazonapi.item",
+      "pk": 1,
+      "fields": {
+          "item_name": "Pizza",
+          "item_price": 10.00
+      }
+  },
+  {
+    "model": "bangazonapi.item",
+    "pk": 2,
+    "fields": {
+        "item_name": "Wings",
+        "item_price": 8.00
+    }
+}
+]

@@ -1,0 +1,38 @@
+[
+  {
+      "model": "bangazonapi.order",
+      "pk": 1,
+      "fields": {
+        "order_name": "The Usual",
+        "customer_name": "John Smith",
+        "completion_status": true,
+        "phone_number": 1234567,
+        "email": "johnsmith@gmail.com",
+        "order_type": "carryout",
+        "payment_type": "credit",
+        "date": "2024-01-08",
+        "tip": 6.99,
+        "order_total": 48.99,
+        "user_id": 1,
+        "items": [1]
+      }
+  },
+  {
+    "model": "bangazonapi.order",
+    "pk": 2,
+    "fields": {
+      "order_name": "Super Order",
+      "customer_name": "Frank Sinatra",
+      "completion_status": true,
+      "phone_number": 7654321,
+      "email": "franksinatra@gmail.com",
+      "order_type": "dinein",
+      "payment_type": "cash",
+      "date": "2024-01-01",
+      "tip": 20.00,
+      "order_total": 69.99,
+      "user_id": 1,
+      "items": [1, 2]
+    }
+}
+]

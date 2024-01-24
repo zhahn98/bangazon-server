@@ -1,0 +1,9 @@
+[
+  {
+      "model": "bangazonapi.user",
+      "pk": 1,
+      "fields": {
+          "uid": 1
+      }
+  }
+]
